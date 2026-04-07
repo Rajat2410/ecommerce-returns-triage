@@ -1,12 +1,3 @@
----
-title: "OpenEnv: E-Commerce Returns & Refund Triage"
-emoji: "🛒"
-colorFrom: "blue"
-colorTo: "green"
-sdk: "docker"
-pinned: false
----
-
 # 🛒 OpenEnv: E-Commerce Returns & Refund Triage
 
 A **real-world OpenEnv benchmark** simulating multi-step customer support workflows for e-commerce returns and refunds.
