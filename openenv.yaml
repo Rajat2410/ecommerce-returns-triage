@@ -1,0 +1,38 @@
+version: "1.0"
+
+name: "ecommerce-returns-triage"
+
+description: "AI agent resolves customer return tickets, enforces policies, and calculates prorated refunds in a multi-step customer support workflow."
+
+tasks:
+
+* name: easy
+  description: "Basic return eligibility check based on policy rules"
+
+* name: medium
+  description: "Requires gathering missing information (e.g., requesting product evidence)"
+
+* name: hard
+  description: "Applies policy and computes exact refund with restocking fees"
+
+* name: clever
+  description: "Optimizes decision-making between return and no-return refund based on business trade-offs"
+
+models:
+observation: models.Observation
+action: models.Action
+state: models.EnvState
+
+api:
+reset: /reset
+step: /step
+
+author: "Rajat Jain, Yash Kumar, Shaurya Babel (IIT Guwahati)"
+
+tags:
+
+* customer-support
+* reinforcement-learning
+* deterministic-grading
+* multi-step-reasoning
+* ecommerce

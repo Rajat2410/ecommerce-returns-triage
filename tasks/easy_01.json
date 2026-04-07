@@ -1,0 +1,22 @@
+{
+    "task_level": "easy",
+    "max_steps": 2,
+    "ground_truth_math": 0.0,
+    "initial_observation": {
+        "ticket_id": "TKT-1001",
+        "customer_message": "Hi, I bought these headphones and don't like how they sound. I want to return them.",
+        "order_date": "2023-08-01",
+        "current_date": "2023-10-15",
+        "items": [
+            {
+                "item_id": "A1",
+                "name": "Headphones",
+                "price": 348.0,
+                "category": "Electronics",
+                "condition": "opened"
+            }
+        ],
+        "policy_snippet": "Standard returns are accepted within 30 days of the original order date. No exceptions for buyer's remorse outside this window.",
+        "conversation_history": []
+    }
+}

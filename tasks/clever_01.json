@@ -1,0 +1,22 @@
+{
+    "task_level": "clever",
+    "max_steps": 2,
+    "ground_truth_math": 8.50,
+    "initial_observation": {
+        "ticket_id": "TKT-5512",
+        "customer_message": "I ordered a 3ft HDMI cable but I actually need a 6ft one. Can I get a refund?",
+        "order_date": "2023-10-10",
+        "current_date": "2023-10-12",
+        "items": [
+            {
+                "item_id": "D4",
+                "name": "HDMI Cable 3ft",
+                "price": 8.50,
+                "category": "Accessories",
+                "condition": "unopened"
+            }
+        ],
+        "policy_snippet": "If the item's total value is under $10.00, do not require the customer to mail the item back, as return shipping costs $12.00. Issue a NO_RETURN_REFUND.",
+        "conversation_history": []
+    }
+}

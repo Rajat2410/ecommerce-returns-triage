@@ -1,0 +1,25 @@
+{
+    "task_level": "medium",
+    "max_steps": 3,
+    "ground_truth_math": 45.00,
+    "hidden_customer_persona": {
+        "on_photo_request": "Sure, here is the picture showing the cracked screen. [attachment: cracked_screen.jpg]"
+    },
+    "initial_observation": {
+        "ticket_id": "TKT-2044",
+        "customer_message": "My tablet case arrived today but the screen protector inside was shattered!",
+        "order_date": "2023-10-12",
+        "current_date": "2023-10-15",
+        "items": [
+            {
+                "item_id": "B2",
+                "name": "Tablet Case",
+                "price": 45.0,
+                "category": "Accessories",
+                "condition": "damaged_claimed"
+            }
+        ],
+        "policy_snippet": "Damaged on arrival claims must be verified with photographic evidence before a refund.",
+        "conversation_history": []
+    }
+}

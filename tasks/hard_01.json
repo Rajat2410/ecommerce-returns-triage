@@ -1,0 +1,22 @@
+{
+    "task_level": "hard",
+    "max_steps": 4,
+    "ground_truth_math": 170.00,
+    "initial_observation": {
+        "ticket_id": "TKT-9099",
+        "customer_message": "I opened this smartwatch, wore it for a day, but it's too big. I want to send it back.",
+        "order_date": "2023-10-01",
+        "current_date": "2023-10-10",
+        "items": [
+            {
+                "item_id": "C3",
+                "name": "Galaxy Watch",
+                "price": 200.0,
+                "category": "Electronics",
+                "condition": "opened_used"
+            }
+        ],
+        "policy_snippet": "Electronics that have been opened and worn are subject to a mandatory 15% restocking fee deducted from the refund.",
+        "conversation_history": []
+    }
+}
