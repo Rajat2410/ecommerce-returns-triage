@@ -4,6 +4,8 @@ from fastapi import FastAPI, HTTPException, Body
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 from typing import Optional
+
+# Absolute imports from the root directory
 from models import Action
 from server.environment import ReturnTriageEnv
 
@@ -12,21 +14,23 @@ current_env = None
 
 class ResetRequest(BaseModel):
     task_level: Optional[str] = "hard"
+
+# Health check for Hugging Face UI
 @app.get("/")
 def health():
-    return {"status": "ok"}
-    
+    return {"status": "ok", "message": "OpenEnv Returns Triage Server is Running"}
+
 @app.post("/reset")
 def reset_environment(request: Optional[ResetRequest] = Body(None)):
     global current_env
     requested_task = request.task_level if request and request.task_level else "hard"
     
-    # Path safety for 4 tasks
+    # Find tasks relative to the app's root
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     task_file = os.path.join(base_dir, "tasks", f"{requested_task}_01.json")
     
     if not os.path.exists(task_file):
-        requested_task = "hard"
+        requested_task = "hard" # Safety fallback
     
     try:
         current_env = ReturnTriageEnv(task_level=requested_task)
@@ -38,10 +42,15 @@ def reset_environment(request: Optional[ResetRequest] = Body(None)):
 @app.post("/step")
 def step_environment(action: Action):
     global current_env
+    
+    # Auto-initialize if /reset was skipped (Resilience Fix)
     if current_env is None:
-        current_env = ReturnTriageEnv(task_level="hard")
-        current_env.reset()
-        
+        try:
+            current_env = ReturnTriageEnv(task_level="hard")
+            current_env.reset()
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Auto-init failed: {str(e)}")
+            
     try:
         obs, reward, done, info = current_env.step(action)
         return {
